@@ -5,7 +5,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 class TypePerso(models.Model):
     codeType = models.fields.CharField(max_length=4)
     fonction = models.fields.CharField(max_length=50)
-    chefService = models.BooleanFields()
+    chefService = models.BooleanField
 
 
 class Personnel(models.Model):
@@ -22,13 +22,11 @@ class Personnel(models.Model):
         return f'{self.nom}'
 
 
-class Ressource(models.model):
-    natureRes = (
-        ('Bat', 'Batiment'),
-        ('Mat', 'Matériel'),
-    )
+class Ressource(models.Model):
+    natureRes = models.TextChoices ('Batiment','Matériel')
+
     codeRess = models.fields.CharField(max_length = 5)
-    typeRess = models.fields.CharField(max_length=1 , choices=natureRes)
+    typeRess = models.fields.CharField(choices=natureRes.choices, max_length=10)
     nomRess = models.fields.CharField(max_length=50)
     def __str__(self):
         return f'{self.nomRess}'
