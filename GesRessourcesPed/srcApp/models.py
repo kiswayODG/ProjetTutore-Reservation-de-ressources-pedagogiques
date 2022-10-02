@@ -9,7 +9,7 @@ class TypePerso(models.Model):
 
 
 class Personnel(models.Model):
-
+    rolelist = models.TextChoices('Utilisateur', 'Administrateur')
     codePerso = models.fields.CharField(max_length=4)
     nom = models.fields.CharField(max_length=50)
     prenom = models.fields.CharField(max_length=50)
@@ -17,6 +17,10 @@ class Personnel(models.Model):
     typePerso = models.ForeignKey(TypePerso, null=True, on_delete=models.SET_NULL)
     dateNaiss = models.fields.IntegerField(
     validators=[MinValueValidator(1900), MaxValueValidator(2004)])
+
+    role = models.fields.CharField(choices=rolelist.choices, max_length=10)
+    username = models.fields.CharField(max_length=50)
+    motDepass = models.fields.CharField(min_length=8, max_length=50)
 
     def __str__(self):
         return f'{self.nom}'
