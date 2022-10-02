@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.validators import MaxValueValidator, MinValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator,MinLengthValidator
 
 # Create your models here.
 class TypePerso(models.Model):
@@ -18,9 +18,9 @@ class Personnel(models.Model):
     dateNaiss = models.fields.IntegerField(
     validators=[MinValueValidator(1900), MaxValueValidator(2004)])
 
-    role = models.fields.CharField(choices=rolelist.choices, max_length=10)
+    role = models.fields.CharField(choices=rolelist.choices, max_length=50)
     username = models.fields.CharField(max_length=50)
-    motDepass = models.fields.CharField(min_length=8, max_length=50)
+    motDepass = models.fields.CharField(validators=[MinLengthValidator(8, message='Veuillez taper un mot de passe à 8 caractère min')], max_length=50,null=False)
 
     def __str__(self):
         return f'{self.nom}'
