@@ -32,5 +32,13 @@ class Ressource(models.Model):
     codeRess = models.fields.CharField(max_length = 5)
     typeRess = models.fields.CharField(choices=natureRes.choices, max_length=10)
     nomRess = models.fields.CharField(max_length=50)
+    reservant = models.ManyToManyField(Personnel, through='Reservation')
     def __str__(self):
         return f'{self.nomRess}'
+
+class Reservation(models.Model):
+    reservateur = models.ForeignKey(Personnel, on_delete=models.CASCADE)
+    ressource = models.ForeignKey(Ressource, on_delete=models.CASCADE)
+    date_joined = models.DateField()
+    objet_reser = models.CharField(max_length=255)
+

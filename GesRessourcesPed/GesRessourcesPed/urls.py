@@ -20,5 +20,6 @@ from srcApp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home)
+    path('', views.home, name='accueil'),
+    path('reservation/', views.reservation, name='reservation'),
 ]

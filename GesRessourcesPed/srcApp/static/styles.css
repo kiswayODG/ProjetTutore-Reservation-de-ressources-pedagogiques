@@ -1,11 +1,11 @@
-@font-face {
+/*@font-face {
   font-family: "FontAwesome";
   src: url('https://github.com/FortAwesome/Font-Awesome/raw/master/font/fontawesome-webfont.eot');
   src: url('https://github.com/FortAwesome/Font-Awesome/raw/master/font/fontawesome-webfont.eot?#iefix') format('eot'), url('https://github.com/FortAwesome/Font-Awesome/raw/master/font/fontawesome-webfont.woff') format('woff'), url('https://github.com/FortAwesome/Font-Awesome/raw/master/font/fontawesome-webfont.ttf') format('truetype'), url('https://github.com/FortAwesome/Font-Awesome/raw/master/font/fontawesome-webfont.svg#FontAwesomeRegular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
-
+*/
 
 [class^="icon-"]:before,
 [class*=" icon-"]:before {
@@ -859,7 +859,7 @@ html, body {
 }
 
 body {
-  background-image: -webkit-gradient(radial, 50% 0%, 0, 50% 0%, 100, color-stop(0%, #474747), color-stop(100%, #0e0e0e));
+ /* background-image: -webkit-gradient(radial, 50% 0%, 0, 50% 0%, 100, color-stop(0%, #474747), color-stop(100%, #0e0e0e));
   background-image: -webkit-radial-gradient(center top, ellipse cover, #474747 0%, #0e0e0e 100%);
   background-image: -moz-radial-gradient(center top, ellipse cover, #474747 0%, #0e0e0e 100%);
   background-image: -o-radial-gradient(center top, ellipse cover, #474747 0%, #0e0e0e 100%);
@@ -869,12 +869,12 @@ body {
   margin: 0;
   height: 100%;
   font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
+*/}
 
 #wrapper {
   position: relative;
 }
-#wrapper h1 {
+/*#wrapper h1 {
   font-size: 1.5em;
   position: absolute;
   top: 5em;
@@ -899,7 +899,7 @@ body {
   font-size: 2.5em;
   display: block;
 }
-
+*/
 #access {
   zoom: 1;
 }

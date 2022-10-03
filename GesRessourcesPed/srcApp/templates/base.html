@@ -1,5 +1,5 @@
-<!DOCTYPE html>
 {% load static %}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,18 +10,19 @@
             <script src="{% static 'bootstrap.min.js' %}" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 
-    <title>Title</title>
+    <title>GesRessourceApp</title>
 </head>
 <body>
 <div id="wrapper">
-  <h1><strong>ClearNav</strong> responsive navigation</h1>
   <nav role="navigation" id="access">
     <a class="skip-link icon-reorder" title="Accéder au menu" href="#menu">Menu</a>
     <ul id="menu">
+        {% block navigation %}
       <li class="active"><a class="icon-home" href="#accueil">Voir ressources</a></li><!-- whitespace
-                --><li><a class="icon-group" href="#quisommesnous">Réservation</a></li><!-- whitespace
+                --><li  class="active" ><a class="icon-group"  href="{% url 'reservation' %}">Réservation</a></li><!-- whitespace
                 --><li><a class="icon-leaf" href="#services">Les Utilisateurs</a></li><!-- whitespace
                 --><li><a class="icon-envelope-alt" href="#contact">Contacter admin</a></li>
+        {% endblock %}
           </ul>
       </nav>
 </div>

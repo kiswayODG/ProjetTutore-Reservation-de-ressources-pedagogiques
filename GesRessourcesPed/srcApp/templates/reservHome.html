@@ -1,0 +1,44 @@
+
+{% extends 'base.html' %}
+
+        {% block navigation %}
+                <li><a class="icon-home" href="#accueil">Voir ressources</a></li>
+                <li class="active" ><a class="icon-group"  href="{% url 'reservation' %}">Réservation</a></li>
+                <li><a class="icon-leaf" href="#services">Les Utilisateurs</a></li>
+                <li><a class="icon-envelope-alt" href="#contact">Contacter admin</a></li>
+        {% endblock %}
+
+        {% block content %}
+
+         <table class="table table-bordered">
+        <thead>
+        <tr>
+        <th>Type ressource</th>
+        <th>Ressource</th>
+        <th>Réserveé par</th>
+        <th>Date </th>
+        <th>Motif</th>
+        <th>Action(s)</th>
+        </tr>
+        </thead>
+        <tbody id="myTable">
+        {% for reservation in datas %}
+        <tr>
+        <td>{{ reservation.ressource.typeRess }}</td>
+        <td>{{ reservation.ressource }}</td>
+        <td>{{ reservation.reservateur }}</td>
+        <td>{{ reservation.date_joined }}</td>
+        <td>{{ reservation.objet_reser }}</td>
+        <td>
+        <form action="#" method="Post">
+        <a class="btn btn-primary" href="#">Modifier</a>
+        <button type="submit" class="btn btn-danger">Supprimer</button>
+        </form>
+        </td>
+
+        </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+
+        {% endblock %}
