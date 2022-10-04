@@ -39,6 +39,6 @@ class Ressource(models.Model):
 class Reservation(models.Model):
     reservateur = models.ForeignKey(Personnel, on_delete=models.CASCADE)
     ressource = models.ForeignKey(Ressource, on_delete=models.CASCADE)
-    date_joined = models.DateField()
-    objet_reser = models.CharField(max_length=255)
+    date_de_reservation = models.DateField()
+    motif_de_reservation = models.CharField(max_length=255)
 
