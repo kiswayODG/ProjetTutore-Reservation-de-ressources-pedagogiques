@@ -37,10 +37,11 @@
         <td>{{ reservation.date_de_reservation }}</td>
         <td>{{ reservation.motif_de_reservation }}</td>
         <td>
-        <form action="#" method="Post">
-        <a class="btn btn-primary" href="#">Modifier</a>
-        <button type="submit" class="btn btn-danger">Supprimer</button>
-        </form>
+        <div style="display:inline-block">
+        <a class="btn btn-primary" href="{% url 'update_reservation' reservation.id %}">Modifier</a>
+        <a  class="btn btn-danger" href="{% url 'delete_reservation' reservation.id %}">Supprimer</a>
+        </div>
+        </div>
         </td>
 
         </tr>

@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator,MinLengthValidator
+from django.db.models import UniqueConstraint
 
 # Create your models here.
 class TypePerso(models.Model):
@@ -41,4 +42,5 @@ class Reservation(models.Model):
     ressource = models.ForeignKey(Ressource, on_delete=models.CASCADE)
     date_de_reservation = models.DateField()
     motif_de_reservation = models.CharField(max_length=255)
+    UniqueConstraint(fields=['ressource', 'date_de_reservation'], name='reservation_unique_de_la_ressource_par_date')
 
