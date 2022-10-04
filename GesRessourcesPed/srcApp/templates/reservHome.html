@@ -13,7 +13,7 @@
     </div>
         <div class="create-reservation" style="margin:50px"></div>
         <div style="display:inline-block">
-        <button type="button" class="btn btn btn-danger" style="margin:10px">Retour</button>
+        <a class="btn btn btn-danger" href="{% url 'accueil' %}" style="margin:10px">Retour</a>
         <a class="btn btn-success " href="{% url 'create_reservation' %}">Faire reservation</a>
         </div>
          <table class="table table-bordered mx-auto" >
@@ -28,13 +28,14 @@
         </tr>
         </thead>
         <tbody id="myTable">
+
         {% for reservation in datas %}
         <tr>
         <td>{{ reservation.ressource.typeRess }}</td>
         <td>{{ reservation.ressource }}</td>
         <td>{{ reservation.reservateur }}</td>
-        <td>{{ reservation.date_joined }}</td>
-        <td>{{ reservation.objet_reser }}</td>
+        <td>{{ reservation.date_de_reservation }}</td>
+        <td>{{ reservation.motif_de_reservation }}</td>
         <td>
         <form action="#" method="Post">
         <a class="btn btn-primary" href="#">Modifier</a>
@@ -46,5 +47,7 @@
         {% endfor %}
         </tbody>
         </table>
-
+        {% if datas|length < 1 %}
+        <h4 class="text-center" style="margin-top:10%">Aucune réservation </h4>
+        {% endif %}
         {% endblock %}
