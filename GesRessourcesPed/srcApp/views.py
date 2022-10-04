@@ -1,7 +1,7 @@
 from django.shortcuts import render
-
+from django.http import HttpResponse
 from srcApp.models import Reservation
-from srcApp.forms import ResrvationForm
+from srcApp.forms import ReservationForm
 
 
 # Create your views here.
@@ -16,12 +16,12 @@ def reservation(request):
 def createReservation(request):
     if request.method == 'POST':
         form = ReservationForm(request.POST)
-        if form.is_valid():
+        #if form.is_valid():
             # créer une nouvelle « Band » et la sauvegarder dans la db
-            reserv = form.save()
+           # reserv = form.save()
             # redirige vers la page de détail du groupe que nous venons de créer
             # nous pouvons fournir les arguments du motif url comme arguments à la fonction de redirection
-            return redirect('reservation_detail', band.id)
+           # return redirect('reservation_detail', band.id)
 
     else:
         form = ReservationForm()
