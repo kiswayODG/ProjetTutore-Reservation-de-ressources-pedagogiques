@@ -7,6 +7,8 @@ from django.shortcuts import redirect
 
 
 # Create your views here.
+def welcome(request):
+    return render(request, 'registration/welcome.html')
 def home(request):
     return render(request, 'index.html')
 

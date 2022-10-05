@@ -15,15 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from django.urls import path, include
+from django.views.generic.base import TemplateView
 from srcApp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name='accueil'),
+    path('', TemplateView.as_view(template_name='registration/welcome.html'), name='home'),
+    #path('index/', views.home, name='accueil'),
     path('reservation/', views.reservation, name='reservation'),
     path('reservation/create_reserv', views.createReservation, name='create_reservation'),
     path('reservation/<int:id>/change/', views.update_res,name='update_reservation'),
     path('reservation/<int:id>/delete/', views.delete_res,name='delete_reservation'),
+    path('welcome/', include("django.contrib.auth.urls")),
 
 ]
