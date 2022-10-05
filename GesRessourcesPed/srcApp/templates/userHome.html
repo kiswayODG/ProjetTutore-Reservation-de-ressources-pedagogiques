@@ -13,41 +13,40 @@
     </div>
         <div class="create-reservation" style="margin:50px"></div>
         <div style="display:inline-block">
-        <a class="btn btn btn-danger" href="{% url 'home' %}" style="margin:10px">Retour</a>
-        <a class="btn btn-success " href="{% url 'create_reservation' %}">Faire reservation</a>
+        <a class="btn btn btn-danger" href="{% url 'accueil' %}" style="margin:10px">Retour</a>
+        <a class="btn btn-success " href="{% url 'create_user' %}">Faire reservation</a>
         </div>
          <table class="table table-bordered mx-auto" >
         <thead>
         <tr>
-        <th>Type ressource</th>
-        <th>Ressource</th>
-        <th>Réserveé par</th>
-        <th>Date </th>
-        <th>Motif</th>
+            <th>Code</th>
+        <th>Nom</th>
+        <th>Prenom</th>
+            <th>Type</th>
+            <th>Role</th>
         <th>Action(s)</th>
         </tr>
         </thead>
         <tbody id="myTable">
-
-        {% for reservation in datas %}
+        {% for user in datas %}
         <tr>
-        <td>{{ reservation.ressource.typeRess }}</td>
-        <td>{{ reservation.ressource }}</td>
-        <td>{{ reservation.reservateur }}</td>
-        <td>{{ reservation.date_de_reservation }}</td>
-        <td>{{ reservation.motif_de_reservation }}</td>
+            <td>{{user.codePerso}}</td>
+            <td>{{ user.nom }}</td>
+            <td>{{ user.prenom }}</td>
+            <td>{{ user.role }}</td>
+            <td>{{ user.typePerso }}</td>
         <td>
-        <div style="display:inline-block">
-        <a class="btn btn-primary" href="{% url 'update_reservation' reservation.id %}">Modifier</a>
-        <a  class="btn btn-danger" href="{% url 'delete_reservation' reservation.id %}">Supprimer</a>
-        </div>
-        </div>
+        <form action="#" method="Post">
+        <a class="btn btn-primary" href="#">Modifier</a>
+        <button type="submit" class="btn btn-danger">Supprimer</button>
+        </form>
         </td>
 
         </tr>
         {% endfor %}
         </tbody>
         </table>
+
         {% if datas|length < 1 %}
         <h4 class="text-center" style="margin-top:10%">Aucune réservation </h4>
         {% endif %}
