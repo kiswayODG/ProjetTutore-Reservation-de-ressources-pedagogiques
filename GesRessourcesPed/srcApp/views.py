@@ -5,6 +5,9 @@ from srcApp.forms import ReservationForm
 from django.core.mail import send_mail
 from django.shortcuts import redirect
 
+from srcApp.forms import UserForm
+from srcApp.models import Personnel
+
 
 # Create your views here.
 def home(request):
@@ -30,6 +33,7 @@ def createReservation(request):
     return render(request,
                   'create_reservation.html',
                   {'form': form})
+
 
 def update_res(request, id):
     reserv = Reservation.objects.get(id=id)
@@ -62,3 +66,23 @@ def delete_res(request, id):
     return render(request,
                     'delete_reserv.html',
                     {'reserv': reserv})
+
+
+## users view
+def user(request):
+    datas = Personnel.objects.all()
+
+    return render(request,"userHome.html", {'datas':datas})
+
+def createUser(request):
+    if request.method == 'POST':
+        form = UserForm(request.POST)
+        if form.is_valid():
+            res = form.save()
+            return redirect('user')
+    else:
+        form = UserForm()
+
+    return render(request,
+                  'create_user.html',
+                  {'form': form})

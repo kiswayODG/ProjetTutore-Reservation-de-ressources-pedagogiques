@@ -23,6 +23,8 @@ urlpatterns = [
     path('', views.home, name='accueil'),
     path('reservation/', views.reservation, name='reservation'),
     path('reservation/create_reserv', views.createReservation, name='create_reservation'),
+    path('user/', views.user, name='user'),
+    path('user/create_user', views.createUser, name='create_user'),
     path('reservation/<int:id>/change/', views.update_res,name='update_reservation'),
     path('reservation/<int:id>/delete/', views.delete_res,name='delete_reservation'),
 

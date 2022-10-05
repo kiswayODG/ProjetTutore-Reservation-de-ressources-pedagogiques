@@ -14,7 +14,6 @@ class Personnel(models.Model):
     codePerso = models.fields.CharField(max_length=4)
     nom = models.fields.CharField(max_length=50)
     prenom = models.fields.CharField(max_length=50)
-    sexe = models.fields.CharField
     typePerso = models.ForeignKey(TypePerso, null=True, on_delete=models.SET_NULL)
     dateNaiss = models.fields.IntegerField(
     validators=[MinValueValidator(1900), MaxValueValidator(2004)])
