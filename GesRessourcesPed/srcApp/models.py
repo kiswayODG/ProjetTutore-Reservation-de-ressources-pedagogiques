@@ -8,6 +8,9 @@ class TypePerso(models.Model):
     codeType = models.fields.CharField(max_length=4)
     fonction = models.fields.CharField(max_length=50)
 
+    def __str__(self):
+        return f'{self.fonction}'
+
 
 
 class Personnel(models.Model):
