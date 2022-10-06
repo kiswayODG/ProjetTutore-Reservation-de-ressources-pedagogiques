@@ -89,7 +89,7 @@ def createUser(request):
                   'create_user.html',
                   {'form': form})
 
-def contact(request):
+def contactAdmin(request):
   form = ContactAdminForm()
   return render(request,
           'contactAdmin.html',

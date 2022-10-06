@@ -26,6 +26,6 @@ class UserForm(forms.ModelForm):
         self.helper = FormHelper()
 
 class ContactAdminForm(forms.Form):
-   name = forms.CharField(required=False)
+   nom = forms.CharField(required=False)
    email = forms.EmailField()
    message = forms.CharField(max_length=1000)
