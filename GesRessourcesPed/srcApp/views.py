@@ -7,6 +7,7 @@ from django.shortcuts import redirect
 from srcApp.forms import ContactAdminForm
 from srcApp.forms import UserForm
 from srcApp.models import Personnel
+from django.core.mail import send_mail
 
 
 # Create your views here.
@@ -85,12 +86,26 @@ def createUser(request):
     else:
         form = UserForm()
 
-    return render(request,
+        return render(request,
                   'create_user.html',
                   {'form': form})
 
 def contactAdmin(request):
-  form = ContactAdminForm()
-  return render(request,
+    if request.method == 'POST':
+        # créer une instance de notre formulaire et le remplir avec les données POST
+        form = ContactUsForm(request.POST)
+
+        if form.is_valid():
+            send_mail(
+                subject=f'Message from {form.cleaned_data["name"] or "anonyme"} via GesRessourceApp Contact Admin form',
+                message=form.cleaned_data['message'],
+                from_email=form.cleaned_data['email'],
+                recipient_list=['ulrichouedraogo500@gmail.com'],
+            )
+
+    else:
+
+        form = ContactAdminForm()
+        return render(request,
           'contactAdmin.html',
           {'form': form})
