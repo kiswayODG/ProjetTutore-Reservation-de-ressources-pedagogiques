@@ -4,10 +4,15 @@
 {% if user.is_authenticated and user.username != "admin" %}
                 <li><a class="icon-home " href="#accueil">Voir ressources</a></li>
                 <li><a class="icon-group"  href="{% url 'reservation' %}">Réservation</a></li>
+               <li><a class="icon-envelope-alt " href="{% url 'contactAdmin' %}">Contacter admin</a></li>
+{% endif %}
+{% if user.is_authenticated and user.username == "admin" %}
+                <li><a class="icon-home " href="#accueil">Voir ressources</a></li>
+                <li><a class="icon-group"  href="{% url 'reservation' %}">Réservation</a></li>
                 <li><a class="icon-leaf " href="#services">Utilisateurs</a></li>
-                <li><a class="icon-envelope-alt " href="#contact">Contacter admin</a></li>
+                 <li><a class="icon-envelope-alt " href="{% url 'contactAdmin' %}">Contacter admin</a></li>
 {% else %}
-             <h1 style="padding:3%"> </h1>
+
 {% endif %}
         {% endblock %}
 
