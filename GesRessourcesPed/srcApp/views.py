@@ -8,6 +8,9 @@ from srcApp.forms import ContactAdminForm
 from srcApp.forms import UserForm
 from srcApp.models import Personnel
 from django.core.mail import send_mail
+from django.views.generic import FormView, TemplateView
+from srcApp.forms import ContactAdminForm
+from django.urls import reverse_lazy
 
 
 # Create your views here.
@@ -90,22 +93,16 @@ def createUser(request):
                   'create_user.html',
                   {'form': form})
 
-def contactAdmin(request):
-    if request.method == 'POST':
-        # créer une instance de notre formulaire et le remplir avec les données POST
-        form = ContactUsForm(request.POST)
 
-        if form.is_valid():
-            send_mail(
-                subject=f'Message from {form.cleaned_data["name"] or "anonyme"} via GesRessourceApp Contact Admin form',
-                message=form.cleaned_data['message'],
-                from_email=form.cleaned_data['email'],
-                recipient_list=['ulrichouedraogo500@gmail.com'],
-            )
+class ContactView(FormView):
+    template_name = 'contactAdmin.html'
+    form_class = ContactAdminForm
+    success_url = reverse_lazy('success')
 
-    else:
+    def form_valid(self, form):
+        # Calls the custom send method
+        form.send()
+        return super().form_valid(form)
 
-        form = ContactAdminForm()
-        return render(request,
-          'contactAdmin.html',
-          {'form': form})
+class ContactSuccessView(TemplateView):
+    template_name = 'success.html'

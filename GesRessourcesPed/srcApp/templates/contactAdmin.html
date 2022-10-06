@@ -4,17 +4,14 @@
        {% endblock %}
 {% load crispy_forms_tags %}
 {% block content %}
-
- <a href="{% url 'home' %}" class="btn btn btn-danger" style="margin:10px">Retour</a>
-    <div class="container" >
- <h3 class="text-center" style="margin-top:20px">Envoyez un mail à l'administrateur</h3>
-<form action="" method="post" style="margin-left:25%; margin-right:25%">
-
-
-  {% csrf_token %}
-  {{ form|crispy }}
-
-  <button type="submit" class="btn btn-primary">Valider</button>
-</form>
+<div class="mx-auto my-4 text-center">
+    <h3>Envoyez un mail à l'administrateur</h3>
+</div>
+<div class="container">
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form | crispy }}
+    <button class="btn btn-success my-3" type="submit">Envoyer</button>
+    </form>
 </div>
 {% endblock %}

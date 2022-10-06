@@ -30,6 +30,7 @@ urlpatterns = [
     path('reservation/<int:id>/change/', views.update_res,name='update_reservation'),
     path('reservation/<int:id>/delete/', views.delete_res,name='delete_reservation'),
     path('welcome/', include("django.contrib.auth.urls")),
-    path('contact-admin/', views.contactAdmin, name='contactAdmin'),
+    path('contact-admin/', views.ContactView.as_view(), name='contactAdmin'),
+    path('success/', views.ContactSuccessView.as_view(), name="success"),
 
 ]
