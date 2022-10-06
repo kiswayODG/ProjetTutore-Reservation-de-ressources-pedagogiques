@@ -1,12 +1,13 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator,MinLengthValidator
 from django.db.models import UniqueConstraint
+from django.contrib.auth.models import User
 
 # Create your models here.
 class TypePerso(models.Model):
     codeType = models.fields.CharField(max_length=4)
     fonction = models.fields.CharField(max_length=50)
-    chefService = models.BooleanField
+
 
 
 class Personnel(models.Model):
@@ -17,10 +18,11 @@ class Personnel(models.Model):
     typePerso = models.ForeignKey(TypePerso, null=True, on_delete=models.SET_NULL)
     dateNaiss = models.fields.IntegerField(
     validators=[MinValueValidator(1900), MaxValueValidator(2004)])
-
+    chefService = models.BooleanField
     role = models.fields.CharField(choices=rolelist.choices, max_length=50)
-    username = models.fields.CharField(max_length=50)
-    motDepass = models.fields.CharField(validators=[MinLengthValidator(8, message='Veuillez taper un mot de passe à 8 caractère min')], max_length=50,null=False)
+    account = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    #username = models.fields.CharField(max_length=50)
+    #motDepass = models.fields.CharField(validators=[MinLengthValidator(8, message='Veuillez taper un mot de passe à 8 caractère min')], max_length=50,null=False)
 
     def __str__(self):
         return f'{self.nom}'

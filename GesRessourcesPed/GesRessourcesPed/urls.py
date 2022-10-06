@@ -22,7 +22,7 @@ from srcApp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='registration/welcome.html'), name='home'),
-    #path('index/', views.home, name='accueil'),
+    path('index/', views.home, name='accueil'),
     path('reservation/', views.reservation, name='reservation'),
     path('reservation/create_reserv', views.createReservation, name='create_reservation'),
     path('user/', views.user, name='user'),
