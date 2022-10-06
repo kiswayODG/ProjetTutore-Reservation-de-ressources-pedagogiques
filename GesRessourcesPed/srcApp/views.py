@@ -4,7 +4,7 @@ from srcApp.models import Reservation
 from srcApp.forms import ReservationForm
 from django.core.mail import send_mail
 from django.shortcuts import redirect
-
+from srcApp.forms import ContactAdminForm
 from srcApp.forms import UserForm
 from srcApp.models import Personnel
 
@@ -88,3 +88,9 @@ def createUser(request):
     return render(request,
                   'create_user.html',
                   {'form': form})
+
+def contact(request):
+  form = ContactAdminForm()
+  return render(request,
+          'contactAdmin.html',
+          {'form': form})

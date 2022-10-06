@@ -24,3 +24,8 @@ class UserForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
+
+class ContactAdminForm(forms.Form):
+   name = forms.CharField(required=False)
+   email = forms.EmailField()
+   message = forms.CharField(max_length=1000)
