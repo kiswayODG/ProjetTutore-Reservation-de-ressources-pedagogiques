@@ -14,7 +14,7 @@
         <div class="create-reservation" style="margin:50px"></div>
         <div style="display:inline-block">
         <a class="btn btn btn-danger" href="{% url 'accueil' %}" style="margin:10px">Retour</a>
-        <a class="btn btn-success " href="{% url 'create_user' %}">Faire reservation</a>
+        <a class="btn btn-success " href="{% url 'create_user' %}">Creer un utilisateur</a>
         </div>
          <table class="table table-bordered mx-auto" >
         <thead>
@@ -37,8 +37,10 @@
             <td>{{ user.typePerso }}</td>
         <td>
         <form action="#" method="Post">
-        <a class="btn btn-primary" href="#">Modifier</a>
-        <button type="submit" class="btn btn-danger">Supprimer</button>
+              {% csrf_token %}
+               {{ form|crispy }}
+        <a class="btn btn-primary" href="{% url 'update_user' user.id %}">Modifier</a>
+        <button type="submit" class="btn btn-danger" href="{% url 'delete_user' user.id %}">Supprimer</button>
         </form>
         </td>
 
@@ -48,6 +50,6 @@
         </table>
 
         {% if datas|length < 1 %}
-        <h4 class="text-center" style="margin-top:10%">Aucune réservation </h4>
+        <h4 class="text-center" style="margin-top:10%">Aucun utilisateur </h4>
         {% endif %}
         {% endblock %}

@@ -28,6 +28,9 @@ urlpatterns = [
     path('reservation/create_reserv', views.createReservation, name='create_reservation'),
     path('user/', views.user, name='user'),
     path('user/create_user', views.createUser, name='create_user'),
+    path('user/<int:id>/change/', views.update_res, name='update_user'),
+    path('user/<int:id>/delete/', views.delete_res, name='delete_user'),
+
     path('reservation/<int:id>/change/', views.update_res,name='update_reservation'),
     path('reservation/<int:id>/delete/', views.delete_res,name='delete_reservation'),
     path('welcome/', include("django.contrib.auth.urls")),

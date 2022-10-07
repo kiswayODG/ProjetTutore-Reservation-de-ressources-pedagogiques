@@ -94,6 +94,40 @@ def createUser(request):
                   {'form': form})
 
 
+def update_user(request, id):
+    user = Personnel.objects.get(id=id)
+
+    if request.method == 'POST':
+        form = UserForm(request.POST, instance=user)
+        if form.is_valid():
+            # mettre à jour le groupe existant dans la base de données
+            form.save()
+            # rediriger vers la page détaillée du groupe que nous venons de mettre à jour
+            return redirect('/user')
+    else:
+        form = UserForm(instance=user)
+
+        return render(request,
+                'update_user.html',
+                {'form': form})
+
+def delete_user(request, id):
+    user = Personnel.objects.get(id=id)  # nécessaire pour GET et pour POST
+
+    if request.method == 'POST':
+        # supprimer le groupe de la base de données
+        user.delete()
+        # rediriger vers la liste des groupes
+        return redirect('/user')
+
+    # pas besoin de « else » ici. Si c'est une demande GET, continuez simplement
+
+    return render(request,
+                    'delete_user.html',
+                    {'user': user})
+
+
+
 class ContactView(FormView):
     template_name = 'contactAdmin.html'
     form_class = ContactAdminForm
