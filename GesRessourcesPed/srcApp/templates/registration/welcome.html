@@ -1,4 +1,4 @@
-{% extends '../base.html' %}
+{% extends '../base1.html' %}
  {% block navigation %}
 
 {% if user.is_authenticated and user.username != "admin" %}
@@ -12,7 +12,7 @@
                 <li><a class="icon-leaf " href="{% url 'user' %}">Utilisateurs</a></li>
                  <li><a class="icon-envelope-alt " href="{% url 'contactAdmin' %}">Contacter admin</a></li>
 {% else %}
-
+<h1 style="padding:3%"> </h1>
 {% endif %}
         {% endblock %}
 
@@ -30,6 +30,9 @@
 <div style="margin-top:10%">
   <p class=" d-flex justify-content-center">Vous n'êtes pas connecté</p>
   <div class=" d-flex justify-content-center"><a class="btn btn-primary btn-lg" href="{% url 'login' %}">Connexion</a></div>
+</div>
+<div>
+    <img src="https://images.app.goo.gl/9Nwts3dEqfGco4U36" class="img-fluid" alt="Responsive image">
 </div>
     {% endif %}
 

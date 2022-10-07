@@ -28,9 +28,9 @@ class UserForm(forms.ModelForm):
 
 class ContactAdminForm(forms.Form):
 
-   name = forms.CharField(max_length=120)
+   nom = forms.CharField(max_length=120)
    email = forms.EmailField()
-   inquiry = forms.CharField(max_length=70)
+   Objet = forms.CharField(max_length=70)
    message = forms.CharField(widget=forms.Textarea)
 
    def get_info(self):
@@ -41,9 +41,9 @@ class ContactAdminForm(forms.Form):
        # Cleaned data
        cl_data = super().clean()
 
-       name = cl_data.get('name').strip()
+       name = cl_data.get('nom').strip()
        from_email = cl_data.get('email')
-       subject = cl_data.get('inquiry')
+       subject = cl_data.get('objet')
 
        msg = f'{name} with email {from_email} said:'
        msg += f'\n"{subject}"\n\n'
