@@ -18,6 +18,7 @@ from django.urls import path
 from django.urls import path, include
 from django.views.generic.base import TemplateView
 from srcApp import views
+from schema_graph.views import Schema
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,5 +33,6 @@ urlpatterns = [
     path('welcome/', include("django.contrib.auth.urls")),
     path('contact-admin/', views.ContactView.as_view(), name='contactAdmin'),
     path('success/', views.ContactSuccessView.as_view(), name="success"),
+    path('schema/', Schema.as_view())
 
 ]
