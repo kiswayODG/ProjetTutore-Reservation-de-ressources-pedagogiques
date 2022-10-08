@@ -25,7 +25,7 @@
   <p class="justify-content-end">Compte : {{ user.username }}</p>
     <ul id="menu"  >
         {% block navigation %}
-                <li><a class="icon-home " href="#accueil">Voir ressources</a></li>
+                <li><a class="icon-home " href="showRessource">Voir ressources</a></li>
                 <li><a class="icon-group"  href="{% url 'reservation' %}">Réservation</a></li>
                 <li><a class="icon-leaf " href="{% url 'user' %}">Utilisateurs</a></li>
                 <li><a class="icon-envelope-alt " href="{% url 'contactAdmin' %}">Contacter admin</a></li>
