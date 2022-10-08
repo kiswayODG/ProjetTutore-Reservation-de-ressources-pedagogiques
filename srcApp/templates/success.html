@@ -4,8 +4,9 @@
        {% endblock %}
 {% load crispy_forms_tags %}
 {% block content %}
+<a href="{% url 'home' %}" class="btn btn btn-danger" style="margin:10px">Retour</a>
 <div class="mx-auto my-4 text-center">
     <h1 class="fw-bolder text-success">Votre message a été envoyé</h1>
-    <p class="my-5">Vous pouvez envoyer un autre ici <a href="{% url 'contactAdmin' %}">page de contactc</a></p>
+    <p class="my-5">Vous pouvez envoyer un autre <a href="{% url 'contactAdmin' %}">ici</a></p>
 </div>
 {% endblock %}

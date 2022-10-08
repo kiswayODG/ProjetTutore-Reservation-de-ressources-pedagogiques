@@ -6,14 +6,12 @@ from django.core.mail import send_mail
 from django.shortcuts import redirect
 from srcApp.forms import ContactAdminForm
 from srcApp.forms import UserForm
-from srcApp.forms import ressourceCreateForm
 from srcApp.models import Personnel
-from srcApp.models import Ressource
 from django.core.mail import send_mail
 from django.views.generic import FormView, TemplateView
 from srcApp.forms import ContactAdminForm
 from django.urls import reverse_lazy
-
+is_send=True
 
 # Create your views here.
 def welcome(request):
@@ -137,45 +135,13 @@ class ContactView(FormView):
 
     def form_valid(self, form):
         # Calls the custom send method
-        form.send()
+        #form.send()
+        if(is_send):
+            return redirect('mailSuccess')
         return super().form_valid(form)
 
 class ContactSuccessView(TemplateView):
     template_name = 'success.html'
 
-
-def createRessource(request):
-    form = ressourceCreateForm()
-    if request.method == 'POST' :
-        form = ressourceCreateForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('showRessource')
-    context = {'form': form}
-    return render(request, 'createRessource.html', context)
-
-def updateRessource(request, id):
-    ress = Ressource.objects.get(id=id)
-    form = createRessource(instance=ress)
-    if request.method == 'POST':
-        form = createRessource(request.post, instance=ress)
-        if form.is_valid():
-            form.save()
-            redirect('showRessource')
-    context = {'form': form}
-    return render(request, 'createRessource.html', context)
-
-def deleteRessource(request, id):
-    ress = Ressource.objects.get(id=id)
-    if request.method == 'POST':
-        ress.delete()
-        return redirect('showRessource')
-
-    return render(request,
-                    'delete.html',
-                    {'ress': ress})
-
-def showRessource(request):
-    datas = Ressource.objects.all()
-
-    return render(request,"showRessource.html", {'datas':datas})
+def mailS(request):
+    return render(request, 'success.html')
