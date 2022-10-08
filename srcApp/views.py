@@ -112,6 +112,13 @@ def update_user(request, id):
                 {'form': form})
 
 def delete_user(request, id):
+    #try:
+     #   user = Personnel.objects.get(id=id)
+    #except Personnel.DoesNotExist:
+     #   return redirect('/user')
+    #user.delete()
+    #return redirect('/user')
+
     user = Personnel.objects.get(id=id)  # nécessaire pour GET et pour POST
 
     if request.method == 'POST':

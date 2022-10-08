@@ -1,14 +1,25 @@
 
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
         {% block navigation %}
+
+{% if user.is_authenticated and user.username != "admin" %}
+ <div style="display:inline-block;font-size:15px;position:relative; right:150px; top:20px"><a class="p-3 mb-2 bg-danger text-white"  href="{% url 'logout' %}">Se deconnecter</a>
+       <p class="text-white">Compte : {{ user.username }}</p></div>
+                <li><a class="icon-home " href="#accueil">Voir ressources</a></li>
+                <li><a class="icon-group p-3 mb-2 bg-dark text-white"  href="{% url 'reservation' %}">Réservation</a></li>
+                <li><a class="icon-envelope-alt " href="{% url 'contactAdmin' %}">Contacter admin</a></li>
+{% endif %}
+{% if user.is_authenticated and user.username == "admin" %}
  <div style="display:inline-block;font-size:15px;position:relative; right:150px; top:20px"><a class="p-3 mb-2 bg-danger text-white"  href="{% url 'logout' %}">Se deconnecter</a>
        <p class="text-white">Compte : {{ user.username }}</p></div>
                 <li><a class="icon-home " href="#accueil">Voir ressources</a></li>
                 <li><a class="icon-group "  href="{% url 'reservation' %}">Réservation</a></li>
-                <li><a class="icon-leaf p-3 mb-2 bg-dark text-white" href="{% url 'user' %}">Utilisateurs</a></li>
+                <li><a class="icon-leaf p-3 mb-2 bg-dark text-white" href="{% url 'user' %}">Reservateurs</a></li>
                 <li><a class="icon-envelope-alt " href="{% url 'contactAdmin' %}">Contacter admin</a></li>
-       {% endblock %}
+{% else %}
+{% endif %}
+{% endblock %}
 
         {% block content %}<div >
 
@@ -16,7 +27,7 @@
         <div class="create-reservation" style="margin:50px"></div>
         <div style="display:inline-block">
         <a class="btn btn btn-danger" href="{% url 'accueil' %}" style="margin:10px">Retour</a>
-        <a class="btn btn-success " href="{% url 'create_user' %}">Creer un utilisateur</a>
+        <a class="btn btn-success " href="{% url 'create_user' %}">Creer un reservateur</a>
         </div>
          <table class="table table-bordered mx-auto" >
         <thead>
@@ -25,6 +36,7 @@
         <th>Nom</th>
         <th>Prenom</th>
             <th>Type</th>
+            <th>User name</th>
             <th>Role</th>
         <th>Action(s)</th>
         </tr>
@@ -35,14 +47,15 @@
             <td>{{user.codePerso}}</td>
             <td>{{ user.nom }}</td>
             <td>{{ user.prenom }}</td>
-            <td>{{ user.role }}</td>
             <td>{{ user.typePerso }}</td>
+            <td>{{ user.account }}</td>
+            <td>{{ user.rolelist }}</td>
         <td>
         <form action="#" method="Post">
               {% csrf_token %}
                {{ form|crispy }}
         <a class="btn btn-primary" href="{% url 'update_user' user.id %}">Modifier</a>
-        <button type="submit" class="btn btn-danger" href="{% url 'delete_user' user.id %}">Supprimer</button>
+            <a  class="btn btn-danger" href="{% url 'delete_user' user.id %}">Supprimer</a>
         </form>
         </td>
 
@@ -52,6 +65,6 @@
         </table>
 
         {% if datas|length < 1 %}
-        <h4 class="text-center" style="margin-top:10%">Aucun utilisateur </h4>
+        <h4 class="text-center" style="margin-top:10%">Aucun Reservateur </h4>
         {% endif %}
         {% endblock %}
