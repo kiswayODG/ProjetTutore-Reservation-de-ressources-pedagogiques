@@ -145,3 +145,39 @@ class ContactSuccessView(TemplateView):
 
 def mailS(request):
     return render(request, 'success.html')
+
+def createRessource(request):
+    form = ressourceCreateForm()
+    if request.method == 'POST' :
+        form = ressourceCreateForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('showRessource')
+    context = {'form': form}
+    return render(request, 'createRessource.html', context)
+
+def updateRessource(request, id):
+    ress = Ressource.objects.get(id=id)
+    form = createRessource(instance=ress)
+    if request.method == 'POST':
+        form = createRessource(request.post, instance=ress)
+        if form.is_valid():
+            form.save()
+            redirect('showRessource')
+    context = {'form': form}
+    return render(request, 'createRessource.html', context)
+
+def deleteRessource(request, id):
+    ress = Ressource.objects.get(id=id)
+    if request.method == 'POST':
+        ress.delete()
+        return redirect('showRessource')
+
+    return render(request,
+                    'delete.html',
+                    {'ress': ress})
+
+def showRessource(request):
+    datas = Ressource.objects.all()
+
+    return render(request,"showRessource.html", {'datas':datas})
