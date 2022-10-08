@@ -4,7 +4,7 @@
 {% if user.is_authenticated and user.username != "admin" %}
  <div style="display:inline-block;font-size:15px;position:relative; right:150px; top:20px"><a class="p-3 mb-2 bg-danger text-white"  href="{% url 'logout' %}">Se deconnecter</a>
        <p class="text-white">Compte : {{ user.username }}</p></div>
-                <li><a class="icon-home " href="#accueil">Voir ressources</a></li>
+                <li><a class="icon-home " href="{% url 'showRessource' %}">Voir ressources</a></li>
                 <li><a class="icon-group "  href="{% url 'reservation' %}">Réservation</a></li>
                 <li><a class="icon-envelope-alt p-3 mb-2 bg-dark text-white" href="{% url 'contactAdmin' %}">Contacter admin</a></li>
 {% endif %}

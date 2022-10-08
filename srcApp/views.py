@@ -6,7 +6,9 @@ from django.core.mail import send_mail
 from django.shortcuts import redirect
 from srcApp.forms import ContactAdminForm
 from srcApp.forms import UserForm
+from srcApp.forms import ressourceCreateForm
 from srcApp.models import Personnel
+from srcApp.models import Ressource
 from django.core.mail import send_mail
 from django.views.generic import FormView, TemplateView
 from srcApp.forms import ContactAdminForm
