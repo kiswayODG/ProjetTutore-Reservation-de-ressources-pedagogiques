@@ -1113,3 +1113,8 @@ body {
     transform: translateY(1em) scale(3) rotate(15deg);
   }
 }
+
+#container1{
+    margin-left: 20%;
+    margin-right: 20%;
+}
