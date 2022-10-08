@@ -11,7 +11,7 @@ from django.core.mail import send_mail
 from django.views.generic import FormView, TemplateView
 from srcApp.forms import ContactAdminForm
 from django.urls import reverse_lazy
-
+is_send=True
 
 # Create your views here.
 def welcome(request):
@@ -135,8 +135,13 @@ class ContactView(FormView):
 
     def form_valid(self, form):
         # Calls the custom send method
-        form.send()
+        #form.send()
+        if(is_send):
+            return redirect('mailSuccess')
         return super().form_valid(form)
 
 class ContactSuccessView(TemplateView):
     template_name = 'success.html'
+
+def mailS(request):
+    return render(request, 'success.html')
