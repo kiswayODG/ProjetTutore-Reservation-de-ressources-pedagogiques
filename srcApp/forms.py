@@ -8,6 +8,8 @@ from django.forms import ModelForm
 from srcApp.models import Ressource
 
 class ReservationForm(forms.ModelForm):
+    date_de_reservation = forms.DateField(input_formats=['%d/%m/%Y'])
+
     class Meta:
         model = Reservation
         fields = '__all__'
