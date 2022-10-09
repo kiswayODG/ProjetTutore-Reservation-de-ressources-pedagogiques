@@ -11,7 +11,12 @@ class TypePerso(models.Model):
     def __str__(self):
         return f'{self.fonction}'
 
+class role(models.Model):
+    code= models.fields.CharField(max_length=4)
+    role=  models.fields.CharField(max_length=50)
 
+    def __str__(self):
+        return f'{self.nom}'
 
 class Personnel(models.Model):
     rolelist = models.TextChoices('Utilisateur', 'Administrateur')
@@ -30,14 +35,16 @@ class Personnel(models.Model):
     def __str__(self):
         return f'{self.nom}'
 
+class TypeRess(models.Model):
+    codeType = models.fields.CharField(max_length=4)
+    ress = models.fields.CharField(max_length=50)
 
+    def __str__(self):
+        return f'{self.ress}'
 class Ressource(models.Model):
-    natureRes = models.TextChoices ('Batiment','Matériel')
-
+    typeRess = models.ForeignKey(TypeRess, null=True, on_delete=models.SET_NULL)
     codeRess = models.fields.CharField(max_length = 5)
-    typeRess = models.fields.CharField(choices=natureRes.choices, max_length=10)
     nomRess = models.fields.CharField(max_length=50)
-
     def __str__(self):
         return f'{self.nomRess}'
 
