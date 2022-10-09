@@ -3,7 +3,7 @@
 {% block content %}
 
 <br>
-<a class="btn btn-primary" href="{% url 'createRessource' %}">Ajouter</a>
+<a class="btn btn-success" href="{% url 'createRessource' %}">Ajouter</a>
 
 <div class="">
     <br>
@@ -20,7 +20,7 @@
             <td>{{ressource.typeRess}}</td>
             <td>{{ressource.nomRess}}</td>
             <td>
-                <a class = "btn btn-sm btn-warning" href="{% url 'updateRessource' ressource.id %}">Modifier</a>
+                <a class = "btn btn-sm btn-primary" href="{% url 'updateRessource' ressource.id %}">Modifier</a>
                 <a class = "btn btn-sm btn-danger" href="{% url 'deleteRessource' ressource.id %}">Supprimer</a>
             </td>
         </tr>
