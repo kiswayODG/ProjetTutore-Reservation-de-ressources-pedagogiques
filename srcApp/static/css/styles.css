@@ -6,11 +6,12 @@
   font-style: normal;
 }
 */
-img {
+.welcom {
 width:100%;
 background: white url("./ecole.jpg") no-repeat;
 height:auto;
 }
+
 
 
 [class^="icon-"]:before,

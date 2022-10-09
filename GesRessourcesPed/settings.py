@@ -77,7 +77,7 @@ TEMPLATES = [
 ]
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "home"
-
+DATE_INPUT_FORMATS = ['%d-%m-%Y']
 WSGI_APPLICATION = 'GesRessourcesPed.wsgi.application'
 
 
