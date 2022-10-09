@@ -6,9 +6,13 @@
   font-style: normal;
 }
 */
-.bg{
-background-image:url('{% static "ecole.jpg" %}');
+img {
+width:100%;
+background: white url("./ecole.jpg") no-repeat;
+height:auto;
 }
+
+
 [class^="icon-"]:before,
 [class*=" icon-"]:before {
   font-family: FontAwesome;
@@ -1112,4 +1116,9 @@ body {
     -o-transform: translateY(1em) scale(3) rotate(15deg);
     transform: translateY(1em) scale(3) rotate(15deg);
   }
+}
+
+#container1{
+    margin-left: 20%;
+    margin-right: 20%;
 }

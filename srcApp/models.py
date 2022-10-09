@@ -37,7 +37,7 @@ class Ressource(models.Model):
     codeRess = models.fields.CharField(max_length = 5)
     typeRess = models.fields.CharField(choices=natureRes.choices, max_length=10)
     nomRess = models.fields.CharField(max_length=50)
-    reservant = models.ManyToManyField(Personnel, through='Reservation')
+
     def __str__(self):
         return f'{self.nomRess}'
 

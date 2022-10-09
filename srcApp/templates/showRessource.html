@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+<a class="btn btn-primary" href="{% url 'createRessource' %}">Ajouter</a>
+
+<div class="">
+    <br>
+    <table class="table table-bordered mx-auto">
+        <tr>
+            <th>Code</th>
+            <th>Type</th>
+            <th>Nom</th>
+            <th>Actions</th>
+        </tr>
+        {% for ressource in datas %}
+        <tr>
+            <td>{{ressource.codeRess}}</td>
+            <td>{{ressource.typeRess}}</td>
+            <td>{{ressource.nomRess}}</td>
+            <td>
+                <a class = "btn btn-sm btn-warning" href="{% url 'updateRessource' ressource.id %}">Modifier</a>
+                <a class = "btn btn-sm btn-danger" href="{% url 'deleteRessource' ressource.id %}">Supprimer</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+{% if datas|length < 1 %}
+        <h4 class="text-center" style="margin-top:10%">Aucune ressource disponible </h4>
+        {% endif %}
+{% endblock %}
