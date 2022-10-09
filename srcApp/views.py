@@ -167,14 +167,15 @@ def createRessource(request):
 
 def updateRessource(request, id):
     ress = Ressource.objects.get(id=id)
-    form = createRessource(instance=ress)
     if request.method == 'POST':
-        form = createRessource(request.post, instance=ress)
+        form = ressourceCreateForm(request.POST, instance=ress)
         if form.is_valid():
             form.save()
-            redirect('showRessource')
-    context = {'form': form}
-    return render(request, 'createRessource.html', context)
+            return redirect('showRessource')
+    else:
+        form = ressourceCreateForm(instance=ress)
+        context = {'form': form}
+        return render(request, 'createRessource.html', context)
 
 def deleteRessource(request, id):
     ress = Ressource.objects.get(id=id)
