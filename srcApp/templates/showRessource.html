@@ -23,7 +23,12 @@
 {% block content %}
 
 <br>
-<a class="btn btn-success" href="{% url 'createRessource' %}" style="margin-left:10px; margin-top:50px">Ajouter ressource</a>
+{% if user.is_authenticated and user.username == "admin" %}
+    <a class="btn btn-success" href="{% url 'createRessource' %}" style="margin-left:10px; margin-top:50px">Ajouter ressource</a>
+{% endif %}
+{% if user.is_authenticated and user.username != "admin" %}
+    <a class="btn btn-secondary mb-2" href="#" style="margin-left:10px; margin-top:50px">Ajouter ressource</a>
+{% endif %}
 <div class="">
     <br>
     <table class="table table-bordered mx-auto">
@@ -39,8 +44,14 @@
             <td>{{ressource.typeRess}}</td>
             <td>{{ressource.nomRess}}</td>
             <td>
-                <a class = "btn  btn-primary" href="{% url 'updateRessource' ressource.id %}">Modifier</a>
-                <a class = "btn  btn-danger" href="{% url 'deleteRessource' ressource.id %}">Supprimer</a>
+                {% if user.is_authenticated and user.username == "admin" %}
+                    <a class = "btn  btn-primary" href="{% url 'updateRessource' ressource.id %}">Modifier</a>
+                    <a class = "btn  btn-danger" href="{% url 'deleteRessource' ressource.id %}">Supprimer</a>
+                {% endif %}
+                {% if user.is_authenticated and user.username != "admin" %}
+                    <a class = "btn  btn-secondary mb-2" href="#">Modifier</a>
+                    <a class = "btn  btn-secondary mb-2" href="#">Supprimer</a>
+                {% endif %}
             </td>
         </tr>
         {% endfor %}
