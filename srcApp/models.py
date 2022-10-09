@@ -11,7 +11,7 @@ class TypePerso(models.Model):
     def __str__(self):
         return f'{self.fonction}'
 
-class role(models.Model):
+class Role(models.Model):
     code= models.fields.CharField(max_length=4)
     role=  models.fields.CharField(max_length=50)
 
@@ -19,7 +19,6 @@ class role(models.Model):
         return f'{self.nom}'
 
 class Personnel(models.Model):
-    rolelist = models.TextChoices('Utilisateur', 'Administrateur')
     codePerso = models.fields.CharField(max_length=4)
     nom = models.fields.CharField(max_length=50)
     prenom = models.fields.CharField(max_length=50)
@@ -27,7 +26,7 @@ class Personnel(models.Model):
     dateNaiss = models.fields.IntegerField(
     validators=[MinValueValidator(1900), MaxValueValidator(2004)])
     chefService = models.BooleanField
-    role = models.fields.CharField(choices=rolelist.choices, max_length=50)
+    role =models.ForeignKey(Role, null=True, on_delete=models.SET_NULL)
     account = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     #username = models.fields.CharField(max_length=50)
     #motDepass = models.fields.CharField(validators=[MinLengthValidator(8, message='Veuillez taper un mot de passe à 8 caractère min')], max_length=50,null=False)
