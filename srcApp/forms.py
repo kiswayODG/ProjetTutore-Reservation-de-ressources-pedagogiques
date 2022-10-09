@@ -4,7 +4,8 @@ from crispy_forms.helper import FormHelper
 from django.core.mail import send_mail
 from django.conf import settings
 from srcApp.models import Personnel
-
+from django.forms import ModelForm
+from srcApp.models import Ressource
 
 class ReservationForm(forms.ModelForm):
     class Meta:
@@ -60,3 +61,8 @@ class ContactAdminForm(forms.Form):
            from_email=settings.EMAIL_HOST_USER,
            recipient_list=[settings.RECIPIENT_ADDRESS]
        )
+
+class ressourceCreateForm(ModelForm):
+    class Meta:
+        model = Ressource
+        fields = '__all__'

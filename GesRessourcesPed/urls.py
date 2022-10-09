@@ -36,6 +36,10 @@ urlpatterns = [
     path('welcome/', include("django.contrib.auth.urls")),
     path('contact-admin/', views.ContactView.as_view(), name='contactAdmin'),
     path('success/', views.ContactSuccessView.as_view(), name="success"),
-    path('schema/', Schema.as_view())
+    path('schema/', Schema.as_view()),
+    path('createRessource/', views.createRessource, name='createRessource'),
+    path('showRessource/', views.showRessource, name='showRessource'),
+    path('updateRessource/<str:id>/', views.updateRessource, name='updateRessource'),
+    path('deleteRessource/<str:id>/', views.deleteRessource, name='deleteRessource'),
 
 ]
