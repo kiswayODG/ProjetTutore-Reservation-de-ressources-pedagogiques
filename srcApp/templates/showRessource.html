@@ -27,7 +27,7 @@
     <a class="btn btn-success" href="{% url 'createRessource' %}" style="margin-left:10px; margin-top:50px">Ajouter ressource</a>
 {% endif %}
 {% if user.is_authenticated and user.username != "admin" %}
-    <a class="btn btn-secondary mb-2" href="#" style="margin-left:10px; margin-top:50px">Ajouter ressource</a>
+    <a class="btn btn-secondary disabled" href="#" style="margin-left:10px; margin-top:50px">Ajouter ressource</a>
 {% endif %}
 <div class="">
     <br>
