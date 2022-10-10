@@ -62,7 +62,7 @@
         </div>
             {% else %}
               <div style="display:inline-block">
-        <a class="btn btn-secondary btn-lg disabled" href="{% url 'update_reservation' reservation.id %}">Modifier </a>
+        <a class="btn btn-primary" href="{% url 'update_reservation' reservation.id %}">Modifier </a>
         <a  class="btn btn-secondary btn-lg disabled" href="{% url 'delete_reservation' reservation.id %}">Supprimer</a>
         </div>
 {% endif %}
