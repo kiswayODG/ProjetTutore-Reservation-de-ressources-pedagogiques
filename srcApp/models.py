@@ -16,7 +16,7 @@ class Role(models.Model):
     role=  models.fields.CharField(max_length=50)
 
     def __str__(self):
-        return f'{self.nom}'
+        return f'{self.role}'
 
 class Personnel(models.Model):
     codePerso = models.fields.CharField(max_length=4)
@@ -26,8 +26,7 @@ class Personnel(models.Model):
     dateNaiss = models.fields.IntegerField(
     validators=[MinValueValidator(1900), MaxValueValidator(2004)])
     chefService = models.BooleanField
-    role =models.ForeignKey(Role, null=True, on_delete=models.SET_NULL)
-    account = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    compte = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     #username = models.fields.CharField(max_length=50)
     #motDepass = models.fields.CharField(validators=[MinLengthValidator(8, message='Veuillez taper un mot de passe à 8 caractère min')], max_length=50,null=False)
 
@@ -53,4 +52,3 @@ class Reservation(models.Model):
     date_de_reservation = models.DateField()
     motif_de_reservation = models.CharField(max_length=255)
     UniqueConstraint(fields=['ressource', 'date_de_reservation'], name='reservation_unique_de_la_ressource_par_date')
-

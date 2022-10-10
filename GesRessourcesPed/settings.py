@@ -81,6 +81,7 @@ DATE_INPUT_FORMATS = ['%d-%m-%Y']
 WSGI_APPLICATION = 'GesRessourcesPed.wsgi.application'
 
 
+
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
