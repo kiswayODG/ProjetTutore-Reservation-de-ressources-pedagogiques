@@ -49,8 +49,8 @@
                     <a class = "btn  btn-danger" href="{% url 'deleteRessource' ressource.id %}">Supprimer</a>
                 {% endif %}
                 {% if user.is_authenticated and user.username != "admin" %}
-                    <a class = "btn  btn-secondary mb-2" href="#">Modifier</a>
-                    <a class = "btn  btn-secondary mb-2" href="#">Supprimer</a>
+                    <a class = "btn  btn-secondary disabled" href="#">Modifier</a>
+                    <a class = "btn  btn-secondary disabled" href="#">Supprimer</a>
                 {% endif %}
             </td>
         </tr>
